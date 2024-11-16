@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import {Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, Timestamp} from "typeorm";
 import {User} from "../../auth/entities/user.entity";
 import {Mesa} from "../../mesas/entity/mesa.entity";
 
@@ -8,11 +8,11 @@ export class Reserva {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @Column({ type: 'date' })
+    @Column({ type: 'date'})
     fecha: Date;
 
     @Column({ type: 'time' })
-    hora: Date;
+    hora: String;
 
     @Column({ type: 'int' })
     cantidadPersonas: number;

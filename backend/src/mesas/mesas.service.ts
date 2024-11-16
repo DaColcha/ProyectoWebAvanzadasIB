@@ -35,6 +35,5 @@ export class MesasService {
         if (!mesa) throw new NotFoundException("Mesa no encontrada");
         mesa.disponible = state;
         await this.mesaRepository.save(mesa);
-        return mesa;
     }
 }

@@ -46,7 +46,10 @@ export class ReservasService {
         await this.reservaRepository.save(reserva);
 
         await this.mesasService.updateState(mesa.id, false); // Ocupar mesa
-        return reserva;
+        return {
+            ...reserva,
+            mesa: { id: mesa.id }
+        };
       }
 
     } catch (error) {
@@ -62,8 +65,9 @@ export class ReservasService {
 
   async findOne(id: string) {
 
-    return this.reservaRepository.findOneBy({
-      id: id
+    return this.reservaRepository.findOne({
+      where: {id: id},
+      relations: ['mesa', 'usuario']
     });
   }
 
@@ -86,7 +90,7 @@ export class ReservasService {
 
     const reserva = await this.findOne(id);
 
-    let newData : any;
+    let newData;
 
     if (!reserva) throw new NotFoundException("Reserva no encontrada");
 
@@ -98,13 +102,14 @@ export class ReservasService {
         if (!usuario) throw new NotFoundException("Usuario no encontrado");
 
         newData = { ...rest, usuario: usuario };
+    }else{
+        newData = updateReservaDto;
     }
 
     try{
         this.reservaRepository.merge(reserva, newData);
 
         await this.reservaRepository.save(reserva);
-
         if(updateReservaDto.estado === 'cancelada' || updateReservaDto.estado === 'finalizada'){
           await this.mesasService.updateState(reserva.mesa.id, true); // Liberar mesa
         }
