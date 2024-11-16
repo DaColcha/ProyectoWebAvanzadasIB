@@ -1,0 +1,36 @@
+import {Controller, Get, Post, Body, Patch, Param, ParseUUIDPipe} from '@nestjs/common';
+import { AuthService } from './auth.service';
+import {LoginUserDto, CreateUserDto, ChangePasswordDto} from "./dto";
+import {Auth, GetUser} from "./decorators";
+import {User} from "./entities/user.entity";
+
+@Controller('auth')
+export class AuthController {
+  constructor(private readonly authService: AuthService) {}
+
+  @Post('register')
+  createUser(@Body() createAuthDto: CreateUserDto) {
+    return this.authService.create(createAuthDto);
+  }
+
+  @Patch('change-password/:id')
+  changePassword(
+      @Param('id', ParseUUIDPipe, ) id: string,
+      @Body() changePasswordDto: ChangePasswordDto) {
+    return this.authService.changePassword(id,changePasswordDto)
+  }
+
+  @Post('login')
+  loginUser(@Body() loginAuthDto: LoginUserDto) {
+    return this.authService.login(loginAuthDto);
+  }
+
+  @Get('auth-status')
+  @Auth()
+  checkAuthStatus(
+      @GetUser() user: User
+  ) {
+    return this.authService.checkAuthStatus( user );
+  }
+
+}
