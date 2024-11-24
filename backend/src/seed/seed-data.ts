@@ -38,39 +38,39 @@ export const menusSeed = [
         nombre: 'Pizza Margarita',
         descripcion: 'Deliciosa pizza con base de tomate, mozzarella y albahaca fresca.',
         precio: 9.99,
-        imagen: 'https://mandolina.co/wp-content/uploads/2023/10/pizza-margarita-1080x550-1-1200x900.jpg',
+        imagen: '/menuItems/pizza.jpg',
     },
     {
         nombre: 'Ensalada César',
         descripcion: 'Ensalada clásica con lechuga romana, crutones y aderezo César.',
         precio: 7.49,
-        imagen: 'https://www.gourmet.cl/wp-content/uploads/2016/09/Ensalada_C%C3%A9sar-web-553x458.jpg',
+        imagen: '/menuItems/caesarsalad.jpg',
     },
     {
         nombre: 'Cheeseburger',
         descripcion: 'Hamburguesa con queso cheddar, lechuga, tomate y cebolla caramelizada.',
         precio: 7.50,
-        imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEJiNX0GZfl21raOShpI3p-W8CkdBITCCwAQ&s',
+        imagen: '/menuItems/burger.jpg',
     },
     {
         nombre: 'Salchipapa',
         descripcion: 'Hamburguesa con queso cheddar, lechuga, tomate y cebolla caramelizada.',
         precio: 3.00,
-        imagen: 'https://www.cocina-ecuatoriana.com/base/stock/Recipe/salchipapas-ecuatorianas/salchipapas-ecuatorianas_web.jpg.webp',
+        imagen: '/menuItems/salchipapa.jpg',
     },
 
     {
         nombre: 'PapiCarne',
         descripcion: 'Hamburguesa con queso cheddar, lechuga, tomate y cebolla caramelizada.',
         precio: 3.75,
-        imagen: 'https://todoenuno.app/wp-content/uploads/2022/04/papi-carne.png',
+        imagen: '/menuItems/papicarne.jpg',
     },
 
     {
         nombre: 'HotDog',
         descripcion: 'Hamburguesa con queso cheddar, lechuga, tomate y cebolla caramelizada.',
         precio: 3.50,
-        imagen: 'https://www.recetasnestle.com.ec/sites/default/files/srh_recipes/06ef0c1b0a174081272824840f4f531d.jpg',
+        imagen: '/menuItems/hotdog.jpg',
     },
 ];
 
