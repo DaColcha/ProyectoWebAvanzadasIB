@@ -14,7 +14,7 @@ const Reserve: React.FC = () => {
 
   const handleReservationSubmit = async (data: ReserveRequestType) => {
     try {
-      const response: ReserveResponseType = await reserveTable(data, authUser.token); 
+      const response: ReserveResponseType = await reserveTable(data, authUser.token);
       setAlert({ message: `Reserva exitosa! Mesa asignada: ${response.mesa.id}`, type: 'success' });
     } catch (error) {
       console.error('Error:', error);
