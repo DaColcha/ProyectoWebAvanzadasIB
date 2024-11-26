@@ -39,7 +39,7 @@ $ pnpm run start:dev
 ```
 3. Ejecuta el endpoint SEED para iniciar los datos por defecto 
 ```bash
-loclahost:3000/seed
+localhost:3000/seed
 ```
 4. Revisa la documentación de la API en el [enlace ⛓️‍💥](https://documenter.getpostman.com/view/30260028/2sAYBPmEf8)
 
