@@ -77,8 +77,11 @@ export class ReservasService {
       throw new BadRequestException("Id de usuario invalido");
     }
 
-    const reservas = await this.reservaRepository.findBy({
-      usuario: { id: id }
+    const reservas = await this.reservaRepository.find({
+      where: {
+        usuario: {id: id}
+      },
+      relations: ['mesa']
     })
 
     if (!reservas) throw new NotFoundException("Reserva no encontrada");
