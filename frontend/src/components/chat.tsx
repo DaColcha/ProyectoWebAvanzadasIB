@@ -14,7 +14,7 @@ const Chat = () => {
 
   // Conectar al WebSocket al montar el componente
   useEffect(() => {
-    socket = io(`${process.env.NEXT_PUBLIC_BASE_FETCH_URL}:3002`); // URL del servidor WebSocket (ajústalo a tu entorno de producción)
+    socket = io(`${process.env.NEXT_PUBLIC_BASE_FETCH_URL}/socket.io/socket.io.js`); // URL del servidor WebSocket (ajústalo a tu entorno de producción)
 
     // Escuchar los mensajes que llegan
     socket.on('chatMessage', (msg: string) => {
