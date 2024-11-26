@@ -5,16 +5,23 @@ import ReservationForm from '@/components/reservationForm';
 import AlertCard from '@/components/alertCard';
 import { ReserveRequestType, ReserveResponseType } from '@/types/Reserve';
 import { reserveTable } from '@/services/reserveService';
-import { useAppSelector } from '@/store';
+import {UserResponseType} from "@/types/User";
 
 const Reserve: React.FC = () => {
-  const authUser = useAppSelector((state) => state.authUser.authUser);
+
   const [alert, setAlert] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
   
 
-  const handleReservationSubmit = async (data: ReserveRequestType) => {
+  const handleReservationSubmit = async (data: ReserveRequestType, user: UserResponseType ) => {
     try {
-      const response: ReserveResponseType = await reserveTable(data, authUser.token);
+      console.log(data)
+      const response: ReserveResponseType = await reserveTable(
+          {
+            ...data, 
+            usuarioId : user.id
+          },
+          user.token
+      );
       setAlert({ message: `Reserva exitosa! Mesa asignada: ${response.mesa.id}`, type: 'success' });
     } catch (error) {
       console.error('Error:', error);

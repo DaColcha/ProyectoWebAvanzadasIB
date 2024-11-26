@@ -3,9 +3,10 @@
 import { useState } from 'react';
 import { ReserveRequestType } from '@/types/Reserve';
 import { useAppSelector } from '@/store';
+import {UserResponseType} from "@/types/User";
 
 interface ReservationFormProps {
-  onSubmit: (data: ReserveRequestType) => void;
+  onSubmit: (data: ReserveRequestType, user : UserResponseType) => void;
 }
 
 const ReservationForm: React.FC<ReservationFormProps> = ({ onSubmit }) => {
@@ -34,9 +35,9 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ onSubmit }) => {
       hora: '',
       cantidadPersonas: 1,
       observaciones: '',
-      usuarioId: authUser.id
+      usuarioId: ''
     });
-    onSubmit(formData);
+    onSubmit(formData, authUser);
   };
 
   return (

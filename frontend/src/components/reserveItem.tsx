@@ -4,6 +4,7 @@ import {updateReserve} from "@/services/reserveService";
 import {useAppSelector} from "@/store";
 import AlertCard from "@/components/alertCard";
 import {Trash2} from "lucide-react";
+import {ActualizarReservaDialog} from "@/components/updateDialog";
 
 interface ReserveItemProps {
     reservaEntered: UserReservesType;
@@ -66,6 +67,27 @@ const ReserveItem: React.FC<ReserveItemProps> = ({reservaEntered, onDelete} : Re
         updateStates()
     }
 
+    const handleUpdate = async (reservaToUpdate : Partial<UserReservesType>) => {
+
+        try {
+            console.log(reservaToUpdate)
+            const updatedReserve = await updateReserve(
+                reservaToUpdate,
+                authUser.token,
+                reserva.id
+            );
+            setReserva({...updatedReserve});
+            setAlert({message: `Reserva actualizada con éxito!`, type: 'success'});
+
+        } catch (error) {
+            console.error("Error:", error);
+            setAlert({message: `Error al actualizar reserva.`, type: 'error'});
+        }
+
+        updateStates()
+    }
+
+
     useEffect(() => {
         updateStates();
     }, [reserva.estado, reserva.hora, reserva.fecha]);
@@ -73,6 +95,9 @@ const ReserveItem: React.FC<ReserveItemProps> = ({reservaEntered, onDelete} : Re
 
     return (<div className="w-[375px] rounded overflow-hidden shadow-lg m-4">
             {alert && <AlertCard message={alert.message} type={alert.type}/>}
+            {canUpdate && (
+                <ActualizarReservaDialog reservaEntered={reserva} onUpdateAction={handleUpdate}/>
+            )}
             <div className="px-6 py-4">
                 <div className="font-bold flex justify-between">
                     <p className=" text-xl mb-2">{reserva.fecha}</p>
@@ -116,7 +141,7 @@ const ReserveItem: React.FC<ReserveItemProps> = ({reservaEntered, onDelete} : Re
                 )
             }
 
-            {inProgress && (
+            {inProgress && !canFinalize && (
                 <div className="flex justify-center gap-3 ">
                     <p>Reserva en progreso ...</p>
                 </div>

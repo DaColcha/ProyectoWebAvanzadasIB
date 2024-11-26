@@ -1,4 +1,4 @@
-import {DeleteResponse, ReserveRequestType, ReserveResponseType} from "@/types/Reserve";
+import {DeleteResponse, ReserveRequestType, ReserveResponseType, UserReservesType} from "@/types/Reserve";
 
 export const reserveTable = async (reserveData: ReserveRequestType, userToken: string): Promise<ReserveResponseType> => {
   const url = `${process.env.NEXT_PUBLIC_BASE_FETCH_URL}/reservas`;
@@ -27,7 +27,7 @@ export const reserveTable = async (reserveData: ReserveRequestType, userToken: s
     });
 }
 
-export const updateReserve = async (reserveData: Partial<ReserveResponseType>, userToken: string, reserveId: string): Promise<Partial<ReserveResponseType>> => {
+export const updateReserve = async (reserveData: Partial<UserReservesType>, userToken: string, reserveId: string): Promise<UserReservesType> => {
 
     const url = `${process.env.NEXT_PUBLIC_BASE_FETCH_URL}/reservas/${reserveId}`;
     return fetch(url, {

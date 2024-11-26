@@ -43,11 +43,13 @@ export default function Reserves() {
     return (
         <div className="flex flex-wrap gap-4 justify-center">
             {alert && <AlertCard message={alert.message} type={alert.type}/>}
-            {reserves.map((reserve) => (
+            {reserves.length > 0 ? reserves.map((reserve) => (
                 <ReserveItem reservaEntered={reserve}
                              key={reserve.id}
-                             onDelete={() => handleDelete(reserve.id)}/>
-            ))}
+                             onDelete={() => handleDelete(reserve.id)}
+                />
+            )) : <p className="text-2xl mt-52"> No tienes reservas</p>}
+
         </div>
     );
 }
