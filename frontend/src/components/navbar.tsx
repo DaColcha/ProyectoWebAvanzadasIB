@@ -18,6 +18,9 @@ const Navbar: React.FC = () => {
           <Link href="/my-reserves" className="text-gray-300 hover:text-white">
             Mis reservas
           </Link>
+          <Link href="/chat" className="text-gray-300 hover:text-white">
+            Chat
+          </Link>
         </div>
         <SignOutButton />
       </div>
