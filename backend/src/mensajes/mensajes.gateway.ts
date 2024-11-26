@@ -10,7 +10,7 @@ import {
 import { Socket } from 'socket.io';
 import { Logger } from '@nestjs/common';
 
-@WebSocketGateway(3002, { cors: { origin: '*' } })
+@WebSocketGateway({ cors: { origin: '*' } })
 export class MensajesGateway implements OnGatewayConnection, OnGatewayDisconnect {
   private logger: Logger = new Logger('MensajesGateway');
 
