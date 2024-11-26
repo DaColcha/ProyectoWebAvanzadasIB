@@ -1,7 +1,6 @@
 import {Controller, Get, Post, Body, Patch, Param, Delete, ParseUUIDPipe} from '@nestjs/common';
 import { ReservasService } from './reservas.service';
-import { CreateReservaDto } from './dto/create-reserva.dto';
-import { UpdateReservaDto } from './dto/update-reserva.dto';
+import { CreateReservaDto, UpdateReservaDto } from './dto';
 import {ValidRoles} from "../auth/interfaces";
 import {Auth} from "../auth/decorators";
 
@@ -41,7 +40,7 @@ export class ReservasController {
   }
 
   @Delete(':id')
-  @Auth( ValidRoles.ADMIN)
+  @Auth()
   remove(@Param('id', ParseUUIDPipe) id: string) {
     return this.reservasService.remove(id);
   }

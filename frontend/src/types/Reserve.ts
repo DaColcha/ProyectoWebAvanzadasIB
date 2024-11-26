@@ -17,6 +17,16 @@ export interface ReserveResponseType {
   id:               string;
 }
 
+export interface UserReservesType {
+  fecha:            string;
+  hora:             string;
+  cantidadPersonas: number;
+  observaciones:    string;
+  estado:           string;
+  mesa:             Mesa;
+  id:               string;
+}
+
 export interface Mesa {
   id: number;
 }
@@ -26,4 +36,14 @@ export interface Usuario {
   usuario:        string;
   nombreCompleto: string;
   rol:            string;
+}
+
+export enum Estado {
+    confirmada = "bg-green-500",
+    solicitada = "bg-yellow-500",
+    finalizada = "bg-blue-500",
+    cancelada = "bg-red-500",
+}
+export interface DeleteResponse {
+  message: string;
 }
