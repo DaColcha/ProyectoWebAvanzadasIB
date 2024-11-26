@@ -8,6 +8,7 @@ import AlertCard from '@/components/alertCard';
 import { login } from '@/services/userService';
 import { useAppDispatch } from '@/store/index';
 import { setAuthUser } from '@/store/authUser/authUserSlice';
+import Link from 'next/link';
 
 const Login: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -30,6 +31,15 @@ const Login: React.FC = () => {
       <h1 className="text-4xl font-bold mb-8">Iniciar Sesión</h1>
       {alert && <AlertCard message={alert.message} type={alert.type}/>}
       <LoginForm onSubmit={handleLoginSubmit} />
+      {/* Enlace añadido */}
+    <div className="text-center mt-4">
+      <Link
+        href="/reset-password"
+        className="text-blue-500 hover:text-blue-700 text-sm font-semibold"
+      >
+        ¿Olvidaste tu contraseña?
+      </Link>
+    </div>
     </div>
   );
 };

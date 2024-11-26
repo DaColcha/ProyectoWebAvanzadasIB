@@ -13,12 +13,12 @@ export class AuthController {
     return this.authService.create(createAuthDto);
   }
 
-  @Patch('change-password/:id')
+  @Patch('change-password/:username')
   changePassword(
-      @Param('id', ParseUUIDPipe, ) id: string,
+      @Param('username' ) param: string,
       @Body() changePasswordDto: ChangePasswordDto) {
-    return this.authService.changePassword(id,changePasswordDto)
-  }
+    return this.authService.changePassword(param,changePasswordDto)
+  }s
 
   @Post('login')
   loginUser(@Body() loginAuthDto: LoginUserDto) {

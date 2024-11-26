@@ -47,10 +47,10 @@ export class AuthService {
 
   }
 
-  async changePassword( id: string, changePassword: ChangePasswordDto ){
+  async changePassword( username: string, changePassword: ChangePasswordDto ){
 
     try {
-      const user = await this.userRepository.findOne({ where: { id } });
+      const user = await this.userRepository.findOne({ where: { usuario: username } });
       if (!user) throw new BadRequestException('Usuario no encontrado');
 
       user.contrasena = await bcrypt.hashSync(changePassword.contrasena, 10);
