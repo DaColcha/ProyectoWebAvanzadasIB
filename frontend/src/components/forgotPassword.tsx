@@ -29,6 +29,7 @@ const ForgotPassword: React.FC = () => {
         router.push('/login');
       }, 4000);
     } catch (error) {
+      console.log(error)
       setAlert({ message: 'Error al actualizar la contraseña. Intente de nuevo.', type: 'error' });
     }
   };
