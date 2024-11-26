@@ -7,6 +7,7 @@
 
 ¡Bienvenido a la plataforma interactiva para restaurantes! 🌟 Este proyecto tiene como objetivo simplificar el proceso de reservas, mejorar la atención al cliente mediante chat en tiempo real, y ofrecer un sistema intuitivo que permita a los usuarios explorar el menú y gestionar sus reservas.  
 
+Prueba la app: (https://proyecto-web-avanzadas-ib.vercel.app/)
 ---
 
 ## 🛠️ **Problema Identificado**  
