@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import io, { Socket } from 'socket.io-client';
+import {Manager, Socket} from 'socket.io-client';
 import { useAppSelector } from '@/store';
 
 let socket: Socket;
@@ -14,7 +14,12 @@ const Chat = () => {
 
   // Conectar al WebSocket al montar el componente
   useEffect(() => {
-    socket = io(`${process.env.NEXT_PUBLIC_BASE_FETCH_URL}/socket.io/socket.io.js`); // URL del servidor WebSocket (ajústalo a tu entorno de producción)
+
+      const manager = new Manager(
+          `${process.env.NEXT_PUBLIC_BASE_FETCH_URL}/socket.io/socket.io.js`,
+      )
+      socket = manager.socket('/')
+
 
     // Escuchar los mensajes que llegan
     socket.on('chatMessage', (msg: string) => {
