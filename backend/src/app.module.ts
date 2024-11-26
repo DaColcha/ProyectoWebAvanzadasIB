@@ -21,6 +21,7 @@ import { SeedModule } from './seed/seed.module';
       database: process.env.DB_NAME,
       synchronize: true,
       autoLoadEntities: true,
+      ssl: { rejectUnauthorized: false }
     }),
 
     ReservasModule, MensajesModule, AuthModule, MesasModule, MenuModule, SeedModule
